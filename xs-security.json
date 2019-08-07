@@ -1,0 +1,27 @@
+{
+	"xsappname": "MTApp",
+	"tenant-mode": "shared",
+	"description": "Multitenant Business App based on Node.js",
+	"scopes": [{
+		"name": "$XSAPPNAME.Callback",
+		"description": "With this scope set, the callbacks for tenant onboarding, offboarding and getDependencies can be called.",
+		"grant-as-authority-to-apps": [
+			"$XSAPPNAME(application,sap-provisioning,tenant-onboarding)"
+		]
+	}, {
+		"name": "$XSAPPNAME.User",
+		"description": "User"
+	}, {
+		"name": "$XSAPPNAME.Administrator",
+		"description": "Administrator"
+	}],
+	"role-templates": [{
+		"name": "user",
+		"description": "User Role",
+		"scope-references": ["$XSAPPNAME.User"]
+	}, {
+		"name": "administrator",
+		"description": "Administrator Role",
+		"scope-references": ["$XSAPPNAME.Administrator", "$XSAPPNAME.User"]
+	}]
+}
